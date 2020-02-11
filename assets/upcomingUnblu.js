@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", function() {
 openVisitorUI = () => {
 
   if (unblu.api.isConfigurationNeeded()) {
-    unblu.api.configure({serverUrl: "https://upcoming.demo.unblu.com", apiKey: "SuEEwlVQRaO1_FaBOlGtnQ"}).initialize().then(api => {
+    unblu.api.configure({serverUrl: "https://services6.unblu.com", apiKey: "SuEEwlVQRaO1_FaBOlGtnQ"}).initialize().then(api => {
       // use the api
       console.log("API initialized successfully!");
 
