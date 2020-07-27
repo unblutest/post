@@ -6,6 +6,60 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 })
 
+document.addEventListener("DOMContentLoaded", function() {
+    var unbluButton = document.getElementById("unblu-pin-link");
+    unbluButton.addEventListener("click", function() {
+        openPinUI();
+        console.log("Unblu called");
+    });
+})
+
+openPinUI = () => {
+
+  if (unblu.api.isConfigurationNeeded()) {
+    unblu.api.configure({serverUrl: "https://services6.unblu.com", apiKey: "SuEEwlVQRaO1_FaBOlGtnQ"}).initialize().then(api => {
+      // use the api
+      console.log("API initialized successfully!");
+
+      api.ui.openPinEntryUi().then(() => {
+
+      }).catch();
+
+
+    }).catch(e => {
+      if(e.type === 'INITIALIZATION_TIMEOUT') {
+        //retry
+      } else if(e.type === 'UNSUPPORTED_BROWSER') {
+        // display unsupported browser dialog
+      } else {
+        // show generic error message
+      }
+    });
+  } else if (unblu.api.isInitialized()) {
+    var api = unblu.api.initializedApi;
+    api.ui.openPinEntryUi().then(() => {
+
+    }).catch();
+  } else {
+    unblu.api.initialize().then(api => {
+      // use the api
+      console.log("API initialized successfully!");
+
+      api.ui.openPinEntryUi().then(() => {
+
+      }).catch();
+    }).catch(e => {
+      if(e.type === 'INITIALIZATION_TIMEOUT') {
+        //retry
+      } else if(e.type === 'UNSUPPORTED_BROWSER') {
+        // display unsupported browser dialog
+      } else {
+        // show generic error message
+      }
+    });
+  }
+}
+
 openVisitorUI = () => {
 
   if (unblu.api.isConfigurationNeeded()) {
