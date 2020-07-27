@@ -4,15 +4,14 @@ document.addEventListener("DOMContentLoaded", function() {
         openVisitorUI();
         console.log("Unblu called");
     });
-})
 
-document.addEventListener("DOMContentLoaded", function() {
-    var unbluButton = document.getElementById("unblu-pin-link");
-    unbluButton.addEventListener("click", function() {
+    var unbluLink = document.getElementById("unblu-pin-link");
+    unbluLink.addEventListener("click", function() {
         openPinUI();
         console.log("Unblu called");
     });
 })
+
 
 openPinUI = () => {
 
